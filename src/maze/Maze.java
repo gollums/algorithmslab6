@@ -4,16 +4,17 @@ public class Maze extends Board {
   		
     public Maze( int rows, int cols ) {
     	super(rows,cols);
-//    	 Implement this!
+    	//TODO!
+
     }
     
     public void create() {
-//    	 Implement this method!
+        //TODO!
     }
     
     public void search() {
-//    	 Implement this method!
+        //TODO!
     }
     
-//    ...
+    // TODO!
 }

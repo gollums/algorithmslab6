@@ -79,6 +79,7 @@ public class Gui
      */
     private void createMaze()
     {
+        //TODO!
     	showValues(width,height);  // Please remove this call when things starts to work correctly (OW we all go crazy!)
 //    	Develop this method!
     	searchButton.setEnabled(true);
@@ -90,7 +91,8 @@ public class Gui
     private void searchMaze()
     {
     	showMessage("Fake search"); // Please remove!
-//    	Develop this method!
+        //TODO!
+        //    	Develop this method!
     }
       
     // ---- Swing stuff to build the frame and all its components and menus ----
@@ -157,21 +159,21 @@ public class Gui
         createButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) { createMaze(); }
         });
-        createButton.setEnabled(false);
+        createButton.setEnabled(true); // TODO: enables create button
         toolbar.add(createButton);
         
         searchButton = new JButton("Search");
         searchButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) { searchMaze(); }
         });
-        searchButton.setEnabled(false);
+        searchButton.setEnabled(true); // TODO: enables search button
         toolbar.add(searchButton);
         
         quitButton = new JButton("Quit");
         quitButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) { quit(); }
         });
-        quitButton.setEnabled(true);
+        quitButton.setEnabled(true); // TODO: enables quit button
         toolbar.add(quitButton);
 
         // Add toolbar into panel with flow layout for spacing
