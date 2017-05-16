@@ -1,3 +1,4 @@
+package maze;
 
 public class Point {
 	public Point( int row , int col ) {

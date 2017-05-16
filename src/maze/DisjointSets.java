@@ -1,4 +1,4 @@
-// DisjointSets class
+package maze;// DisjointSets class
 //
 // CONSTRUCTION: with int representing initial number of sets
 //

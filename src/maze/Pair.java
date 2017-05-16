@@ -1,3 +1,5 @@
+package maze;
+
 public class Pair<A,B> {
 	public Pair(A first, B second) {
 		this.first = first;
