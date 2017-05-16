@@ -82,6 +82,12 @@ public class BoardDisplay extends Board implements Observer {
 	}
 	    
 	public void update(Observable o, Object arg) {
-//		 Develop this method!
+//		 TODO!
+		if(arg == "create"){
+			drawGrid();
+			knockDownWall(0, Point.Direction.LEFT);
+			knockDownWall(maxRow-1, maxCol-1, Point.Direction.RIGHT);
+		}
+
 	}
 }

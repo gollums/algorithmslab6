@@ -24,6 +24,8 @@ public class Gui
     private JButton quitButton;    
     private int width = 0, height = 0;
     private Canvas canvas;
+    private Maze maze;
+    private BoardDisplay boardDisplay;
     
     /**
      * Create an Maze explorer and display its GUI on screen.
@@ -81,7 +83,15 @@ public class Gui
     {
         //TODO!
     	showValues(width,height);  // Please remove this call when things starts to work correctly (OW we all go crazy!)
+        showAbout();
 //    	Develop this method!
+        maze = new Maze(height, width);
+        boardDisplay = new BoardDisplay(canvas,height,width);
+        maze.addObserver(boardDisplay);
+
+        maze.create();
+
+        boardDisplay.update(maze, "create");
     	searchButton.setEnabled(true);
     }
 
@@ -159,14 +169,14 @@ public class Gui
         createButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) { createMaze(); }
         });
-        createButton.setEnabled(true); // TODO: enables create button
+        createButton.setEnabled(false); // TODO: enables create button
         toolbar.add(createButton);
         
         searchButton = new JButton("Search");
         searchButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) { searchMaze(); }
         });
-        searchButton.setEnabled(true); // TODO: enables search button
+        searchButton.setEnabled(false); // TODO: enables search button
         toolbar.add(searchButton);
         
         quitButton = new JButton("Quit");

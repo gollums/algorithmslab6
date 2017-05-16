@@ -10,6 +10,9 @@ public class Maze extends Board {
     
     public void create() {
         //TODO!
+
+
+        notifyObservers();
     }
     
     public void search() {
