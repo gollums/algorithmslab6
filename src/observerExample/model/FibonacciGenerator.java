@@ -1,4 +1,4 @@
-package model;
+package observerExample.model;
 
 /**
  * Genereates the next Fibonacci number: 1, 1, 2, 3, 5, 8, 13,... 
