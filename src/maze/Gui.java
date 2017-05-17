@@ -91,7 +91,6 @@ public class Gui
 
         maze.create();
 
-        boardDisplay.update(maze, "create");
     	searchButton.setEnabled(true);
     }
 
