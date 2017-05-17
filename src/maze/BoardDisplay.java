@@ -88,6 +88,9 @@ public class BoardDisplay extends Board implements Observer {
 			drawGrid();
 		}else {
 			Pair<Integer, Point.Direction> pair = (Pair<Integer, Point.Direction>) arg;
+			if (pair.first == 0) knockDownWall(pair.first, Point.Direction.LEFT);
+			if (pair.first == maxCell - 1) knockDownWall(pair.first, Point.Direction.RIGHT);
+			
 			knockDownWall(pair.first, pair.second);
 		}
 	}

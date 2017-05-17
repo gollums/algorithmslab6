@@ -67,6 +67,21 @@ public class DisjointSets
             return s[ x ] = find( s[ x ] );
     }
 
+    /**
+     * TODO: 
+     */
+    public boolean trySet(){
+        int min = -1;
+        for(int i = 0; i < s.length; i++) {
+            if (min <= find(s[i])){
+                min = find(s[i]);
+            }
+        }
+
+        return min*-1 == s.length;
+    }
+
+
     private int [ ] s;
 
 

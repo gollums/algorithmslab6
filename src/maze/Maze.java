@@ -1,12 +1,16 @@
 package maze;
 
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 public class Maze extends Board {
 
     private Random randomDirection;
     private Random randomCell;
+    private List<Integer> fini;
+
 
 
     public Maze(int rows, int cols) {
@@ -21,11 +25,13 @@ public class Maze extends Board {
         int cellID;
         Pair<Integer, Point.Direction> pair;
         DisjointSets disjointSets = new DisjointSets(maxCell);
+        fini = new LinkedList<>();
 
         setChanged();
         notifyObservers("create");
 
-        for (int i = 0; i < maxCell; i++){
+        while(!disjointSets.trySet()){
+
             cellID = randomCell.nextInt(maxCell);
             Point.Direction direction = getRandomDirection();
             System.out.println(cellID);
@@ -35,7 +41,7 @@ public class Maze extends Board {
             if (disjointSets.find(cellID) != cellID){
                 switch (direction){
                     case DOWN:
-                        disjointSets.union(cellID,cellID+maxCol);
+                        disjointSets.union(cellID,cellID+maxCol-1);
                         break;
 
                     case LEFT:
@@ -43,7 +49,7 @@ public class Maze extends Board {
                         break;
 
                     case UP:
-                        disjointSets.union(cellID, cellID + maxCol);
+                        disjointSets.union(cellID, cellID + maxCol-1);
                         break;
 
                     case RIGHT:
