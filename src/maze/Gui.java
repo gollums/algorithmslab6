@@ -81,7 +81,6 @@ public class Gui
      */
     private void createMaze()
     {
-
         showAbout();
     	showValues(width,height);  // Please remove this call when things starts to work correctly (OW we all go crazy!)
 

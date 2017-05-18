@@ -20,6 +20,9 @@ public class Maze extends Board {
         randomCell = new Random();
     }
 
+    /**
+     * Creates a maze with help of unions.
+     */
     public void create() {
         //TODO!
         int cellID;
@@ -42,7 +45,7 @@ public class Maze extends Board {
 
                 switch (direction){
                     case DOWN:
-                        if (pair.first < maxCell - maxCol -1) {
+                        if (pair.first < maxCell - maxCol) {
                             second = disjointSets.find(pair.first + maxCol);
                             if (first != second) {
                                 disjointSets.union(first, second);
@@ -84,7 +87,6 @@ public class Maze extends Board {
                             }
                         }
                         break;
-
                 }
             notifyObservers(pair);
         }
