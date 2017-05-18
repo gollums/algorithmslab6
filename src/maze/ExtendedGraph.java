@@ -7,10 +7,12 @@ public class ExtendedGraph extends Graph {
     public List<Integer> getPath(int destName ) {
 
 
+
         return null;
     }
     private List<Integer> getPath( Vertex dest ) {
 
+        getPath(dest);
         return null;
     }
 }

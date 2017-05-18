@@ -111,8 +111,14 @@ public class Maze extends Board {
 
     public void search() {
         //TODO!
+        List<Integer> pathList = new LinkedList<>();
+        ExtendedGraph extendedGraph = new ExtendedGraph();
+        pathList = extendedGraph.getPath(maxCell -1);
 
-
+        for (int i : pathList){
+            setChanged();
+            notifyObservers("search" + pathList.get(i));
+        }
 
     }
     
