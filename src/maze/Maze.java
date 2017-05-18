@@ -23,17 +23,16 @@ public class Maze extends Board {
     public void create() {
         //TODO!
         int cellID;
-        int first, second;
+        int first, second, unionCounter = maxCell;
         Pair<Integer, Point.Direction> pair;
         DisjointSets disjointSets = new DisjointSets(maxCell);
-        fini = new LinkedList<>();
 
         setChanged();
         notifyObservers("create");
 
-        while(!disjointSets.trySet()){
+        while(unionCounter > 1){
 
-            cellID = randomCell.nextInt(maxCell);
+            cellID = randomCell.nextInt(maxCell-1);
             Point.Direction direction = getRandomDirection();
             System.out.println(cellID);
             System.out.println(direction);
@@ -41,38 +40,53 @@ public class Maze extends Board {
 
             first = disjointSets.find(pair.first);
 
-            if (disjointSets.find(cellID) != cellID){
                 switch (direction){
                     case DOWN:
-                        second = disjointSets.find(pair.first + maxCol);
-
-                        if (first !=  second)
-                            disjointSets.union(first,second);
+                        if (pair.first < maxCell - maxCol -1) {
+                            second = disjointSets.find(pair.first + maxCol);
+                            if (first != second) {
+                                disjointSets.union(first, second);
+                                unionCounter--;
+                                setChanged();
+                            }
+                        }
                         break;
 
                     case LEFT:
-                        second = disjointSets.find(pair.first - 1);
-                        if (first !=  second)
-                            disjointSets.union(first,second);
+                        if(pair.first % maxCol != 0) {
+                            second = disjointSets.find(pair.first - 1);
+                            if (first != second) {
+                                disjointSets.union(first, second);
+                                unionCounter--;
+                                setChanged();
+                            }
+                        }
                         break;
 
                     case UP:
-                        second = disjointSets.find(pair.first - maxCol);
-                        if (first !=  second)
-                            disjointSets.union(first,second);
+                        if (pair.first > maxCol -1) {
+                            second = disjointSets.find(pair.first - maxCol);
+                            if (first != second) {
+                                disjointSets.union(first, second);
+                                unionCounter--;
+                                setChanged();
+                            }
+                        }
                         break;
 
                     case RIGHT:
-                        second = disjointSets.find(pair.first + 1);
-                        if (first !=  second)
-                            disjointSets.union(first,second);
+                        if(pair.first % maxCol != maxCol -1) {
+                            second = disjointSets.find(pair.first + 1);
+                            if (first != second) {
+                                disjointSets.union(first, second);
+                                unionCounter--;
+                                setChanged();
+                            }
+                        }
                         break;
 
                 }
-            }
-            setChanged();
             notifyObservers(pair);
-
         }
 
     }

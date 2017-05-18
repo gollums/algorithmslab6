@@ -86,11 +86,16 @@ public class BoardDisplay extends Board implements Observer {
 
 		if(arg == "create"){
 			drawGrid();
+			knockDownWall(0, Point.Direction.LEFT);
+			knockDownWall(maxCell -1, Point.Direction.RIGHT);
+
 		}else {
 			Pair<Integer, Point.Direction> pair = (Pair<Integer, Point.Direction>) arg;
-			if (pair.first == 0) knockDownWall(pair.first, Point.Direction.LEFT);
-			if (pair.first == maxCell - 1) knockDownWall(pair.first, Point.Direction.RIGHT);
-			
+
+			//if (pair.first == 0) knockDownWall(pair.first, Point.Direction.LEFT);
+
+			//if (pair.first == maxCell - 1) knockDownWall(pair.first, Point.Direction.RIGHT);
+
 			knockDownWall(pair.first, pair.second);
 		}
 	}
