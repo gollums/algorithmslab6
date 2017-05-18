@@ -27,6 +27,7 @@ public class Maze extends Board {
         //TODO!
         int cellID;
         int first, second, unionCounter = maxCell;
+        Graph graphPath;
         Pair<Integer, Point.Direction> pair;
         DisjointSets disjointSets = new DisjointSets(maxCell);
 
@@ -49,6 +50,8 @@ public class Maze extends Board {
                             second = disjointSets.find(pair.first + maxCol);
                             if (first != second) {
                                 disjointSets.union(first, second);
+                                graphPath.addEdge(first,second,);
+                                graphPath.addEdge(second,first,);
                                 unionCounter--;
                                 setChanged();
                             }
