@@ -23,6 +23,7 @@ public class Maze extends Board {
     public void create() {
         //TODO!
         int cellID;
+        int first, second;
         Pair<Integer, Point.Direction> pair;
         DisjointSets disjointSets = new DisjointSets(maxCell);
         fini = new LinkedList<>();
@@ -38,22 +39,33 @@ public class Maze extends Board {
             System.out.println(direction);
             pair = new Pair<>(cellID, direction);
 
+            first = disjointSets.find(pair.first);
+
             if (disjointSets.find(cellID) != cellID){
                 switch (direction){
                     case DOWN:
-                        disjointSets.union(cellID,cellID+maxCol-1);
+                        second = disjointSets.find(pair.first + maxCol);
+
+                        if (first !=  second)
+                            disjointSets.union(first,second);
                         break;
 
                     case LEFT:
-                        disjointSets.union(cellID,cellID -1);
+                        second = disjointSets.find(pair.first - 1);
+                        if (first !=  second)
+                            disjointSets.union(first,second);
                         break;
 
                     case UP:
-                        disjointSets.union(cellID, cellID + maxCol-1);
+                        second = disjointSets.find(pair.first - maxCol);
+                        if (first !=  second)
+                            disjointSets.union(first,second);
                         break;
 
                     case RIGHT:
-                        disjointSets.union(cellID, cellID + 1);
+                        second = disjointSets.find(pair.first + 1);
+                        if (first !=  second)
+                            disjointSets.union(first,second);
                         break;
 
                 }
