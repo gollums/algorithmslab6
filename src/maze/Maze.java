@@ -109,6 +109,9 @@ public class Maze extends Board {
 
     public void search() {
         //TODO!
+
+
+
     }
     
     // TODO!

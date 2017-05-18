@@ -14,7 +14,7 @@ import java.util.Iterator;
 
 public class Gui
 {
-	private static String VERSION = "1.1";
+	private static String VERSION = "2.1";
     // fields:
     private JFrame frame;
     private JTextField widthField = new JTextField();
@@ -81,10 +81,10 @@ public class Gui
      */
     private void createMaze()
     {
-        //TODO!
-    	showValues(width,height);  // Please remove this call when things starts to work correctly (OW we all go crazy!)
+
         showAbout();
-//    	Develop this method!
+    	showValues(width,height);  // Please remove this call when things starts to work correctly (OW we all go crazy!)
+
         maze = new Maze(height, width);
         boardDisplay = new BoardDisplay(canvas,height,width);
         maze.addObserver(boardDisplay);
@@ -102,6 +102,7 @@ public class Gui
     	showMessage("Fake search"); // Please remove!
         //TODO!
         //    	Develop this method!
+        maze.search();
     }
       
     // ---- Swing stuff to build the frame and all its components and menus ----
