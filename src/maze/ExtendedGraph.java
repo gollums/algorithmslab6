@@ -11,7 +11,7 @@ public class ExtendedGraph extends Graph {
         List<Integer> tmpList = new LinkedList<>();
         Vertex w = vertexMap.get(destName);
         if(w == null){
-            throw new NoSuchElementException("Destination vertx not found");
+            throw new NoSuchElementException("Destination vertex not found");
         }else{
             return getPath(w);
         }

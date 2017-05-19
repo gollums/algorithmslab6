@@ -51,8 +51,8 @@ public class Maze extends Board {
                             second = disjointSets.find(pair.first + maxCol);
                             if (first != second) {
                                 disjointSets.union(first, second);
-                                graphPath.addEdge(first,second, 1.0);
-                                graphPath.addEdge(second,first,1.0);
+                                graphPath.addEdge(pair.first,pair.first + maxCol, 1.0);
+                                graphPath.addEdge(pair.first + maxCol,pair.first,1.0);
                                 unionCounter--;
                                 setChanged();
                             }
@@ -64,8 +64,8 @@ public class Maze extends Board {
                             second = disjointSets.find(pair.first - 1);
                             if (first != second) {
                                 disjointSets.union(first, second);
-                                graphPath.addEdge(first,second,1.0);
-                                graphPath.addEdge(second,first,1.0);
+                                graphPath.addEdge(pair.first,pair.first -1, 1.0);
+                                graphPath.addEdge(pair.first -1,pair.first,1.0);
                                 unionCounter--;
                                 setChanged();
                             }
@@ -77,8 +77,8 @@ public class Maze extends Board {
                             second = disjointSets.find(pair.first - maxCol);
                             if (first != second) {
                                 disjointSets.union(first, second);
-                                graphPath.addEdge(first,second,1.0);
-                                graphPath.addEdge(second,first,1.0);
+                                graphPath.addEdge(pair.first,pair.first - maxCol, 1.0);
+                                graphPath.addEdge(pair.first -maxCol,pair.first,1.0);
                                 unionCounter--;
                                 setChanged();
                             }
@@ -90,8 +90,8 @@ public class Maze extends Board {
                             second = disjointSets.find(pair.first + 1);
                             if (first != second) {
                                 disjointSets.union(first, second);
-                                graphPath.addEdge(first,second,1.0);
-                                graphPath.addEdge(second,first,1.0);
+                                graphPath.addEdge(pair.first,pair.first +1, 1.0);
+                                graphPath.addEdge(pair.first +1,pair.first,1.0);
                                 unionCounter--;
                                 setChanged();
                             }
