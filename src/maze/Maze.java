@@ -1,8 +1,5 @@
 package maze;
 
-
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Random;
 
 public class Maze extends Board {
@@ -12,11 +9,8 @@ public class Maze extends Board {
     private ExtendedGraph graphPath;
 
 
-
-
     public Maze(int rows, int cols) {
         super(rows, cols);
-        //TODO!
         randomDirection = new Random();
         randomCell = new Random();
         graphPath = new ExtendedGraph();
@@ -26,7 +20,7 @@ public class Maze extends Board {
      * Creates a maze with help of unions.
      */
     public void create() {
-        //TODO!
+
         int cellID;
         int first, second, unionCounter = maxCell;
         Pair<Integer, Point.Direction> pair;
@@ -120,19 +114,11 @@ public class Maze extends Board {
     }
 
     public void search() {
-        //TODO!
-        System.out.println("Test1");
-        graphPath.unweighted(0);
-        graphPath.printPath(maxCell - 1);
-        List<Integer> pathList;
-        pathList = graphPath.getPath(maxCell - 1);
 
-        for (int i : pathList){
+        for (int i : graphPath.getPath(maxCell - 1)){
             setChanged();
             notifyObservers(i);
         }
 
     }
-    
-    // TODO!
 }

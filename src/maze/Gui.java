@@ -14,14 +14,15 @@ import java.util.Iterator;
 
 public class Gui
 {
-	private static String VERSION = "2.1";
+	private static String VERSION = "2.5";
     // fields:
     private JFrame frame;
     private JTextField widthField = new JTextField();
     private JTextField heightField = new JTextField();
     private JButton createButton;
     private JButton searchButton;
-    private JButton quitButton;    
+    private JButton quitButton;
+    private JButton aboutButton;
     private int width = 0, height = 0;
     private Canvas canvas;
     private Maze maze;
@@ -81,9 +82,9 @@ public class Gui
      */
     private void createMaze()
     {
-        showAbout();
-    	showValues(width,height);  // Please remove this call when things starts to work correctly (OW we all go crazy!)
 
+        //showValues(width,height);  // Please remove this call when things starts to work correctly (OW we all go crazy!)
+        canvas.erase();
         maze = new Maze(height, width);
         boardDisplay = new BoardDisplay(canvas,height,width);
         maze.addObserver(boardDisplay);
@@ -126,64 +127,59 @@ public class Gui
         JPanel toolbar = new JPanel();
         toolbar.setLayout(new GridLayout(7, 2, 10, 10));
         
-        widthField.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		createButton.setEnabled(false);
-        		searchButton.setEnabled(false);
-        		width = 0;
-        		String text = widthField.getText();
-        		if ( text != null && text.length() > 0 ) {
-        			try {
-        				width = Integer.parseInt(text);	
-        			}
-        			catch (NumberFormatException x) {}
-        			if ( width > 0 && height > 0 )
-        				createButton.setEnabled(true);
-        		} 
-        	}
+        widthField.addActionListener(e -> {
+            createButton.setEnabled(false);
+            searchButton.setEnabled(false);
+            width = 0;
+            String text = widthField.getText();
+            if ( text != null && text.length() > 0 ) {
+                try {
+                    width = Integer.parseInt(text);
+                }
+                catch (NumberFormatException x) {}
+                if ( width > 0 && height > 0 )
+                    createButton.setEnabled(true);
+            }
         });
         toolbar.add(new JLabel("width"));
         toolbar.add(widthField);      
         
-        heightField.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) { 
-        		createButton.setEnabled(false);
-        		searchButton.setEnabled(false);
-        		height = 0;
-        		String text = heightField.getText();
-        		if ( text != null && text.length() > 0 ) {
-        			try {
-        				height = Integer.parseInt(text);
-        			}
-        			catch (NumberFormatException x) {}
-        			if ( width > 0 && height > 0 )
-        				createButton.setEnabled(true);
-        		} 
-        	}
+        heightField.addActionListener(e -> {
+            createButton.setEnabled(false);
+            searchButton.setEnabled(false);
+            height = 0;
+            String text = heightField.getText();
+            if ( text != null && text.length() > 0 ) {
+                try {
+                    height = Integer.parseInt(text);
+                }
+                catch (NumberFormatException x) {}
+                if ( width > 0 && height > 0 )
+                    createButton.setEnabled(true);
+            }
         });
         toolbar.add(new JLabel("height"));
         toolbar.add(heightField);      
         
         createButton = new JButton("Create");
-        createButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) { createMaze(); }
-        });
-        createButton.setEnabled(false); // TODO: enables create button
+        createButton.addActionListener(e -> createMaze());
+        createButton.setEnabled(false);
         toolbar.add(createButton);
         
         searchButton = new JButton("Search");
-        searchButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) { searchMaze(); }
-        });
-        searchButton.setEnabled(false); // TODO: enables search button
+        searchButton.addActionListener(e -> searchMaze());
+        searchButton.setEnabled(false);
         toolbar.add(searchButton);
         
         quitButton = new JButton("Quit");
-        quitButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) { quit(); }
-        });
-        quitButton.setEnabled(true); // TODO: enables quit button
+        quitButton.addActionListener(e -> quit());
+        quitButton.setEnabled(true);
         toolbar.add(quitButton);
+
+        aboutButton = new JButton("About");
+        aboutButton.addActionListener(e-> showAbout());
+        aboutButton.setEnabled(true);
+        toolbar.add(aboutButton);
 
         // Add toolbar into panel with flow layout for spacing
         JPanel flow = new JPanel();

@@ -82,7 +82,6 @@ public class BoardDisplay extends Board implements Observer {
 	}
 	    
 	public void update(Observable o, Object arg) {
-//		 TODO!
 
 		if(arg == "create"){
 			drawGrid();
@@ -90,7 +89,6 @@ public class BoardDisplay extends Board implements Observer {
 			knockDownWall(maxCell -1, Point.Direction.RIGHT);
 
 		}else if(arg instanceof Integer) {
-			System.out.println("Test2");
 			fillCell((Integer)arg);
 
 		}else{

@@ -16,3 +16,9 @@ USER INSTRUCTIONS:
     Create ritar först ut ett rutnär vars vägar sedan slås ner med hjälp av union som skapar mängder.
     När alla rutor tillhör samma mängd så är labyrinten klar.
 
+2:  Vi la till edges i create för att skapa broar mellan noderna. Sen använder vi en for each loop för att gå igenom listan som
+    returneras av getPath för att fylla noderna som ger den snabbaste lösningen.
+    GetPath använder sig av dijkstras algoritm för att hitta den snabbaste lösningen. Sedan lägger vi till destinations namnet
+    i en lista. detta görs rekursivt tills alla noder är tilllagda och då har vägen ritats klart.
+
+

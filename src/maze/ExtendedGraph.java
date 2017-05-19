@@ -7,8 +7,7 @@ import java.util.NoSuchElementException;
 public class ExtendedGraph extends Graph {
 
     public List<Integer> getPath(int destName ) {
-        unweighted(0);
-        List<Integer> tmpList = new LinkedList<>();
+        dijkstra(0);
         Vertex w = vertexMap.get(destName);
         if(w == null){
             throw new NoSuchElementException("Destination vertex not found");
