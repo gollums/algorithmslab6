@@ -9,7 +9,7 @@ public class Maze extends Board {
 
     private Random randomDirection;
     private Random randomCell;
-    private Graph graphPath;
+    private ExtendedGraph graphPath;
 
 
 
@@ -19,7 +19,7 @@ public class Maze extends Board {
         //TODO!
         randomDirection = new Random();
         randomCell = new Random();
-        graphPath = new Graph();
+        graphPath = new ExtendedGraph();
     }
 
     /**
@@ -39,8 +39,8 @@ public class Maze extends Board {
 
             cellID = randomCell.nextInt(maxCell-1);
             Point.Direction direction = getRandomDirection();
-            System.out.println(cellID);
-            System.out.println(direction);
+            //System.out.println(cellID);
+            //System.out.println(direction);
             pair = new Pair<>(cellID, direction);
 
             first = disjointSets.find(pair.first);
@@ -121,13 +121,15 @@ public class Maze extends Board {
 
     public void search() {
         //TODO!
-        List<Integer> pathList = new LinkedList<>();
-        ExtendedGraph extendedGraph = new ExtendedGraph();
-        pathList = extendedGraph.getPath(maxCell -1);
+        System.out.println("Test1");
+        graphPath.unweighted(0);
+        graphPath.printPath(maxCell - 1);
+        List<Integer> pathList;
+        pathList = graphPath.getPath(maxCell - 1);
 
         for (int i : pathList){
             setChanged();
-            notifyObservers("search" + pathList.get(i));
+            notifyObservers(i);
         }
 
     }

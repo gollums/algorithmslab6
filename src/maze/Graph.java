@@ -70,7 +70,11 @@ class Vertex
     public int        scratch;// Extra variable used in algorithm
 
     public Vertex( int nm )
-      { name = nm; adj = new LinkedList<Edge>( ); reset( ); }
+      {
+          name = nm;
+          adj = new LinkedList<Edge>( );
+          reset( );
+      }
 
     public void reset( )
       { dist = Graph.INFINITY; prev = null; scratch = 0; }    

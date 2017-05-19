@@ -98,7 +98,7 @@ public class Gui
      */
     private void searchMaze()
     {
-    	showMessage("Fake search"); // Please remove!
+    	//showMessage("Fake search"); // Please remove!
         //TODO!
         //    	Develop this method!
         maze.search();

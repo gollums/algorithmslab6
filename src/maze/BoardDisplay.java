@@ -89,14 +89,14 @@ public class BoardDisplay extends Board implements Observer {
 			knockDownWall(0, Point.Direction.LEFT);
 			knockDownWall(maxCell -1, Point.Direction.RIGHT);
 
-		}else {
+		}else if(arg instanceof Integer) {
+			System.out.println("Test2");
+			fillCell((Integer)arg);
+
+		}else{
 			Pair<Integer, Point.Direction> pair = (Pair<Integer, Point.Direction>) arg;
 
 			knockDownWall(pair.first, pair.second);
-		}
-
-		if(arg == "search"){
-
 		}
 	}
 }
