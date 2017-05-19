@@ -20,7 +20,6 @@ public class Maze extends Board {
      * Creates a maze with help of unions.
      */
     public void create() {
-
         int cellID;
         int first, second, unionCounter = maxCell;
         Pair<Integer, Point.Direction> pair;
@@ -33,8 +32,6 @@ public class Maze extends Board {
 
             cellID = randomCell.nextInt(maxCell-1);
             Point.Direction direction = getRandomDirection();
-            //System.out.println(cellID);
-            //System.out.println(direction);
             pair = new Pair<>(cellID, direction);
 
             first = disjointSets.find(pair.first);
@@ -44,9 +41,10 @@ public class Maze extends Board {
                         if (pair.first < maxCell - maxCol) {
                             second = disjointSets.find(pair.first + maxCol);
                             if (first != second) {
-                                disjointSets.union(first, second);
-                                graphPath.addEdge(pair.first,pair.first + maxCol, 1.0);
-                                graphPath.addEdge(pair.first + maxCol,pair.first,1.0);
+                                disjointSets.union(first, second); // creates a set between two nodes in the grid
+                                //Roads are connected depending on what direction is randomized
+                                graphPath.addEdge(pair.first,pair.first + maxCol, 1.0); //links nodes with a bridge
+                                graphPath.addEdge(pair.first + maxCol,pair.first,1.0);//links nodes with bridge back
                                 unionCounter--;
                                 setChanged();
                             }

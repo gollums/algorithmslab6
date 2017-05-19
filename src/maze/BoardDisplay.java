@@ -91,11 +91,9 @@ public class BoardDisplay extends Board implements Observer {
 		}else if(arg instanceof Integer) {
 			fillCell((Integer)arg);
 
-		}else{
-			if(arg instanceof Pair ) {
+		}else if(arg instanceof Pair ) {
 				Pair<Integer, Point.Direction> pair = (Pair<Integer, Point.Direction>) arg;
 				knockDownWall(pair.first, pair.second);
-			}
 		}
 	}
 }
